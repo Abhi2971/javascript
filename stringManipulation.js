@@ -134,3 +134,76 @@ function countVowel(f){
 console.log("Que_09) Total vowels count are",countVowel("Abhi   shek  shelke    FROM SATARA"));
 
 //Que 10
+
+function pallindrome(g){
+    let g1=g;
+    let g2=g1.split('').reverse().join('');
+    if(g2===g1){
+        console.log("Que_10) string is pallindrome");
+    }
+    else{
+        console.log("Que_10) string is not pallindrome");
+    }
+}
+pallindrome("abaa");
+pallindrome("aba");
+
+//Que 11
+function truncateString(string, length) {
+    if (string.length <= length) {
+        return string;
+    } else {
+        return string.substring(0, length - 3) + "...";
+    }
+}
+let inputString = "This is a long string that needs to be truncated.";
+let truncatedString = truncateString(inputString, 20);
+console.log("Que_11) ",truncatedString);
+
+// Que 12
+
+function maskString(inputString, sensitiveInfoStartIndex, sensitiveInfoLength, maskChar = '*') {
+    // Check if the provided start index is within the string bounds
+    if (sensitiveInfoStartIndex < 0 || sensitiveInfoStartIndex >= inputString.length) {
+        return inputString; // Return the original string if start index is invalid
+    }
+
+    // Calculate the end index of the sensitive information
+    const sensitiveInfoEndIndex = sensitiveInfoStartIndex + sensitiveInfoLength;
+
+    // Check if the end index is within the string bounds
+    if (sensitiveInfoEndIndex > inputString.length) {
+        return inputString; // Return the original string if end index is beyond the string length
+    }
+
+    // Mask the sensitive information
+    const maskedString = inputString.substring(0, sensitiveInfoStartIndex) +
+        maskChar.repeat(sensitiveInfoLength) +
+        inputString.substring(sensitiveInfoEndIndex);
+
+    return maskedString;
+}
+
+// Example usage:
+const inputString2 = "Your credit card number is 1234 5678 9012 3456.";
+const sensitiveInfoStartIndex = 24; // Index where the credit card number starts
+const sensitiveInfoLength = 19; // Length of the credit card number
+const maskedString = maskString(inputString2, sensitiveInfoStartIndex, sensitiveInfoLength);
+console.log("Que_12) ",maskedString);
+
+// Que 13
+
+function validateEmail(email) {
+    // Regular expression for email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // Test the input string against the regex
+    return emailRegex.test(email);
+}
+
+// Example usage:
+const email1 = "example@example.com";
+const email2 = "invalid-email.com";
+console.log("Que_13) Email verification is ",validateEmail(email1)); // Output: true
+console.log("Que_13) Email verification is ",validateEmail(email2)); // Output: false
+
